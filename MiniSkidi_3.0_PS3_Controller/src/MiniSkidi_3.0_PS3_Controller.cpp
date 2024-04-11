@@ -1,6 +1,7 @@
-#include <Ps3Controller.h>
 #include "motor/DRV8833-motor.h"
 #include "lights/dual-gpio-lights.h"
+#include "servo/ppm-servo.h"
+#include "controller/PS3-controller.h"
 #include "consts.h"
 
 /*
@@ -11,11 +12,20 @@ bucket up r2 down l2
 claw up r1 down l1
 */
 
+void setup_motors();
+void setup_servos();
+void setup_lights();
+void setup_controller();
+
 DRV8833Motor right_motor;
 DRV8833Motor left_motor;
 DRV8833Motor arm_motor;
 
+PpmServo bucket_servo;
+PpmServo claw_servo;
+
 DualGpioLights aux_lights;
+
 
 void setup_motors()
 {
@@ -48,6 +58,27 @@ void setup_motors()
   arm_motor.init(&arm_motor_config);
 }
 
+void setup_servos()
+{
+  PpmServoConfig bucket_servo_config;
+  bucket_servo_config.ppm_pin = Consts::BUCKET_SERVO_PPM_PIN;
+  bucket_servo_config.init_pos = Consts::BUCKET_SERVO_INIT_POS;
+  bucket_servo_config.min_pos = Consts::BUCKET_SERVO_MIN_POS;
+  bucket_servo_config.max_pos = Consts::BUCKET_SERVO_MIN_POS;
+  bucket_servo_config.step_size = Consts::BUCKET_SERVO_STEP_SIZE;
+  bucket_servo_config.reverse = Consts::BUCKET_SERVO_REVERSE;
+  bucket_servo.init(&bucket_servo_config);
+
+  PpmServoConfig claw_servo_config;
+  claw_servo_config.ppm_pin = Consts::CLAW_SERVO_PPM_PIN;
+  claw_servo_config.init_pos = Consts::CLAW_SERVO_INIT_POS;
+  claw_servo_config.min_pos = Consts::CLAW_SERVO_MIN_POS;
+  claw_servo_config.max_pos = Consts::CLAW_SERVO_MIN_POS;
+  claw_servo_config.step_size = Consts::CLAW_SERVO_STEP_SIZE;
+  claw_servo_config.reverse = Consts::CLAW_SERVO_REVERSE;
+  claw_servo.init(&claw_servo_config);
+}
+
 void setup_lights()
 {
   DualGpioLightsConfig aux_lights_config;
@@ -57,49 +88,21 @@ void setup_lights()
   aux_lights.init(&aux_lights_config);
 }
 
-void run()
-{
-  return;
-}
-
-Servo bucketServo;
-Servo clawServo;
-
-int bucketServoValue = 140;
-int clawServoValue = 150;
-int servoDelay = 0;
-
-bool moveClawServoUp = false;
-bool moveClawServoDown = false;
-bool moveBucketServoUp = false;
-bool moveBucketServoDown = false;
-
-void onConnect()
-{
-  Serial.println("Connected.");
+void setup_controller(){
+  PS3ControllerConfig controller_config;
+  controller_config.connection_string = Consts::PS3_CONTROLLER_CONNECTION_STRING;
+  PS3Controller &ps3_controller = PS3Controller::getInstance();
+  ps3_controller.init(&controller_config);
 }
 
 void setup()
 {
-
-  Serial.begin(115200);
-
-  Ps3.attach(run);
-  Ps3.attachOnConnect(onConnect);
-  Ps3.begin("a0:5a:5a:a0:0f:98");
-
-  Serial.println("Ready.");
-
-  bucketServo.attach(bucketServoPin);
-  clawServo.attach(clawServoPin);
-
-  bucketServo.write(bucketServoValue);
-  clawServo.write(clawServoValue);
+  setup_motors();
+  setup_servos();
+  setup_lights();
+  setup_controller();
 }
 
 void loop()
 {
-  if (!Ps3.isConnected())
-    return;
-  delay(500);
 }

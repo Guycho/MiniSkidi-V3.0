@@ -21,10 +21,23 @@ namespace Consts{
     double ARM_MOTOR_DEAD_BAND = 20;
     bool ARM_MOTOR_REVERSE = false;
 
-    uint8_t BUCKET_SERVO_PIN = 23;
-    uint8_t CLAW_SERVO_PIN = 22;
+    uint8_t BUCKET_SERVO_PPM_PIN = 23;
+    uint8_t BUCKET_SERVO_INIT_POS = 140;
+    uint8_t BUCKET_SERVO_MIN_POS = 0;
+    uint8_t BUCKET_SERVO_MAX_POS = 180;
+    uint8_t BUCKET_SERVO_STEP_SIZE = 1;
+    bool BUCKET_SERVO_REVERSE = false;
+
+    uint8_t CLAW_SERVO_PPM_PIN = 22;
+    uint8_t CLAW_SERVO_INIT_POS = 150;
+    uint8_t CLAW_SERVO_MIN_POS = 0;
+    uint8_t CLAW_SERVO_MAX_POS = 180;
+    uint8_t CLAW_SERVO_STEP_SIZE = 1;
+    bool CLAW_SERVO_REVERSE = false;
 
     uint8_t AUX_LIGHTS_POSITIVE_PIN = 18;
     uint8_t AUX_LIGHTS_NEGATIVE_PIN = 5;
     bool AUX_LIGHT_INIT_STATE = false;
+
+    String PS3_CONTROLLER_CONNECTION_STRING = "a0:5a:5a:a0:0f:98";
 }

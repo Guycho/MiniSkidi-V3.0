@@ -29,15 +29,17 @@ public:
   void step(bool dir) override;
 
 
+
 private:
   void set_pos(uint8_t angle);
+  Servo my_servo;
   uint8_t my_pos = -1;
-  uint8_t my_ppm_pin = -1;
   uint8_t my_init_pos = -1;
   uint8_t my_min_pos = -1;
   uint8_t my_max_pos = -1;
   uint8_t my_step_size = -1;
   bool my_reverse = false;
   bool is_config_valid = false;
+
 };
 #endif
