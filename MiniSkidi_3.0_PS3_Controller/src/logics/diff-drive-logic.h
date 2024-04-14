@@ -1,25 +1,18 @@
-#ifndef _ISERVO_H
-#define _ISERVO_H
+#ifndef _DIFF_DRIVE_MIXER_H
+#define _DIFF_DRIVE_MIXER_H
 
 /**************************************************************************************************************
 
   Created : Guy Raiz
 
 ******************************************************************************************************************/
+#include <Arduino.h>
 
-class IServoConfig
-{
-private:
-  virtual void foo()
-  {
-    return;
-  }
-};
-
-class IServo
+class DiffDriveLogic
 {
 public:
-  virtual void init(const IServoConfig *servo_config) = 0;
-  virtual void step(int8_t dir) = 0;
+  void calc_diff_drive(double y, double x, double &right_motor_pct, double &left_motor_pct);
+
+private:
 };
 #endif

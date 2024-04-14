@@ -26,8 +26,8 @@ void PS3Controller::init(const IControllerConfig *controller_config)
   Ps3.attach(PS3Controller::run);
   Ps3.attachOnConnect(on_connect);
 }
-IControllerData PS3Controller::get_controller_data() {
-  return ps_controller_data;
+IControllerData *PS3Controller::get_controller_data() {
+  return &ps_controller_data;
 }
 void PS3Controller::set_controller_state(IControllerState state) {
   

@@ -1,25 +1,12 @@
-#ifndef _ISERVO_H
-#define _ISERVO_H
-
+#ifndef _LOGICS_HANDLER_H
+#define _LOGICS_HANDLER_H
 /**************************************************************************************************************
 
   Created : Guy Raiz
 
 ******************************************************************************************************************/
+void logics_handler_init();
+void logics_handler_run(double lx, double ly, double ry, bool r1, bool r2, bool r3, bool l1, bool l2);
 
-class IServoConfig
-{
-private:
-  virtual void foo()
-  {
-    return;
-  }
-};
 
-class IServo
-{
-public:
-  virtual void init(const IServoConfig *servo_config) = 0;
-  virtual void step(int8_t dir) = 0;
-};
 #endif

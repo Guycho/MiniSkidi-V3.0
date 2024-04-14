@@ -22,7 +22,7 @@ class DualGpioLights : public ILights
 {
 public:
   void init(const ILightsConfig *lights_config) override;
-  void toggle() override;
+  void toggle(bool toggle) override;
 
 private:
   void set_state(bool state);

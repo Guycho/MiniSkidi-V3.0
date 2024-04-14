@@ -1,25 +1,13 @@
-#ifndef _ISERVO_H
-#define _ISERVO_H
-
 /**************************************************************************************************************
 
   Created : Guy Raiz
 
 ******************************************************************************************************************/
 
-class IServoConfig
-{
-private:
-  virtual void foo()
-  {
-    return;
-  }
-};
+#include "aux-lights-logic.h"
 
-class IServo
+bool AuxLightsLogic::aux_lights_logic_run(bool light_switch)
 {
-public:
-  virtual void init(const IServoConfig *servo_config) = 0;
-  virtual void step(int8_t dir) = 0;
-};
-#endif
+  bool toggle_lights = light_switch;
+  return toggle_lights;
+}

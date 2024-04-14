@@ -1,25 +1,18 @@
-#ifndef _ISERVO_H
-#define _ISERVO_H
+#ifndef _AUX_LIGHTS_LOGIC_H
+#define _AUX_LIGHTS_LOGIC_H
 
 /**************************************************************************************************************
 
   Created : Guy Raiz
 
 ******************************************************************************************************************/
+#include <Arduino.h>
 
-class IServoConfig
-{
-private:
-  virtual void foo()
-  {
-    return;
-  }
-};
-
-class IServo
+class AuxLightsLogic
 {
 public:
-  virtual void init(const IServoConfig *servo_config) = 0;
-  virtual void step(int8_t dir) = 0;
+  bool aux_lights_logic_run(bool light_switch);
+
+private:
 };
 #endif

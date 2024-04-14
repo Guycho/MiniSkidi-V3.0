@@ -1,5 +1,5 @@
-#ifndef _DIFF_DRIVE_MIXER_H
-#define _DIFF_DRIVE_MIXER_H
+#ifndef _ARM_LOGIC_H
+#define _ARM_LOGIC_H
 
 /**************************************************************************************************************
 
@@ -8,10 +8,10 @@
 ******************************************************************************************************************/
 #include <Arduino.h>
 
-class DiffDriveMixer
+class ArmLogic
 {
 public:
-  void calc_diff_drive(double y, double x, double &right_motor_pct, double &left_motor_pct);
+  void calc_arm_motion(double y, double &arm_motor_pct);
 
 private:
 };

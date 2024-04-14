@@ -46,7 +46,7 @@ public:
     return instance;
   }
   void init(const IControllerConfig *controller_config) override;
-  IControllerData get_controller_data() override;
+  IControllerData *get_controller_data() override;
   void set_controller_state(IControllerState state) override;
   static void run();
   static void on_connect();

@@ -21,16 +21,19 @@ void DualGpioLights::init(const ILightsConfig *lights_config)
     return;
   }
   set_state(my_state);
-  }
+}
 
-void DualGpioLights::toggle()
+void DualGpioLights::toggle(bool toggle)
 {
   if (false == is_config_valid)
   {
     return;
   }
-  my_state = !my_state;
-  set_state(my_state);
+  else if (true == toggle)
+  {
+    my_state = !my_state;
+    set_state(my_state);
+  }
 }
 
 void DualGpioLights::set_state(bool state)

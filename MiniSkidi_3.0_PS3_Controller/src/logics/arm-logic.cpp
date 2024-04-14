@@ -1,25 +1,16 @@
-#ifndef _ISERVO_H
-#define _ISERVO_H
-
 /**************************************************************************************************************
 
   Created : Guy Raiz
 
 ******************************************************************************************************************/
 
-class IServoConfig
-{
-private:
-  virtual void foo()
-  {
-    return;
-  }
-};
+#include "arm-logic.h"
+#include "utils.h"
 
-class IServo
+static const double MAX_PERCENT = 100.0;
+
+void ArmLogic::calc_arm_motion(double y, double &arm_motor_pct)
 {
-public:
-  virtual void init(const IServoConfig *servo_config) = 0;
-  virtual void step(int8_t dir) = 0;
-};
-#endif
+  arm_motor_pct = y;
+  Utils::constrain_double(arm_motor_pct, -MAX_PERCENT, MAX_PERCENT);
+}

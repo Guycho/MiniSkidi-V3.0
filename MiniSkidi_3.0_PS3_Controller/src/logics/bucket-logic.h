@@ -1,25 +1,22 @@
-#ifndef _ISERVO_H
-#define _ISERVO_H
+#ifndef _BUCKET_LOGIC_H
+#define _BUCKET_LOGIC_H
 
 /**************************************************************************************************************
 
   Created : Guy Raiz
 
 ******************************************************************************************************************/
+#include <Arduino.h>
+#include <Chrono.h>
 
-class IServoConfig
-{
-private:
-  virtual void foo()
-  {
-    return;
-  }
-};
-
-class IServo
+class BucketLogic
 {
 public:
-  virtual void init(const IServoConfig *servo_config) = 0;
-  virtual void step(int8_t dir) = 0;
+  void init(double degrees_per_second);
+  int8_t calc_bucket_motion(bool up, bool down);
+
+private:
+  uint32_t my_step_delay;
+  Chrono my_step_timer;
 };
 #endif

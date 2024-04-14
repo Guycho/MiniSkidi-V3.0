@@ -4,11 +4,11 @@
 
 ******************************************************************************************************************/
 
-#include "diff-drive-mixer.h"
+#include "diff-drive-logic.h"
 #include "utils.h"
 static const double MAX_PERCENT = 100.0;
 
-void DiffDriveMixer::calc_diff_drive(double y, double x, double &right_motor_pct, double &left_motor_pct)
+void DiffDriveLogic::calc_diff_drive(double y, double x, double &right_motor_pct, double &left_motor_pct)
 {
     right_motor_pct = y + x;
     left_motor_pct = y - x;

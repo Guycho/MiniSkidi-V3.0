@@ -26,9 +26,7 @@ class PpmServo : public IServo
 {
 public:
   void init(const IServoConfig *servo_config) override;
-  void step(bool dir) override;
-
-
+  void step(int8_t dir) override;
 
 private:
   void set_pos(uint8_t angle);
@@ -37,7 +35,7 @@ private:
   uint8_t my_init_pos = -1;
   uint8_t my_min_pos = -1;
   uint8_t my_max_pos = -1;
-  uint8_t my_step_size = -1;
+  uint8_t my_step_size = 1;
   bool my_reverse = false;
   bool is_config_valid = false;
 

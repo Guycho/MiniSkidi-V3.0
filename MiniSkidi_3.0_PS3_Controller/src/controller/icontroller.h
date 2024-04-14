@@ -38,7 +38,7 @@ class IController
 {
 public:
   virtual void init(const IControllerConfig *controller_config) = 0;
-  virtual IControllerData get_controller_data() = 0;
+  virtual IControllerData *get_controller_data() = 0;
   virtual void set_controller_state(IControllerState state) = 0;
 };
 #endif

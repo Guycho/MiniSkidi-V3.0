@@ -1,25 +1,11 @@
-#ifndef _ISERVO_H
-#define _ISERVO_H
-
+#ifndef _INPUTS_HANDLER_H
+#define _INPUTS_HANDLER_H
 /**************************************************************************************************************
 
   Created : Guy Raiz
 
 ******************************************************************************************************************/
+void inputs_handler_init();
+void inputs_handler_run();
 
-class IServoConfig
-{
-private:
-  virtual void foo()
-  {
-    return;
-  }
-};
-
-class IServo
-{
-public:
-  virtual void init(const IServoConfig *servo_config) = 0;
-  virtual void step(int8_t dir) = 0;
-};
 #endif

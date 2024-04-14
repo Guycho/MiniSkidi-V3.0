@@ -20,6 +20,6 @@ class ILights
 {
 public:
   virtual void init(const ILightsConfig *lights_config) = 0;
-  virtual void toggle() = 0;
+  virtual void toggle(bool toggle) = 0;
 };
 #endif
