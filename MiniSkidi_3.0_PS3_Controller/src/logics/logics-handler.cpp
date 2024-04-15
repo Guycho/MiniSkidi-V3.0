@@ -4,7 +4,7 @@
 
 ******************************************************************************************************************/
 #include "logics-handler.h"
-#include "analog_motor-logic.h"
+#include "analog-motor-logic.h"
 #include "increment-servo-logic.h"
 #include "diff-drive-logic.h"
 #include "toggle-logic.h"
