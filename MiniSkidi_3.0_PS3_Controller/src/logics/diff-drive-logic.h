@@ -1,5 +1,5 @@
-#ifndef _DIFF_DRIVE_MIXER_H
-#define _DIFF_DRIVE_MIXER_H
+#ifndef _DIFF_DRIVE_LOGIC_H
+#define _DIFF_DRIVE_LOGIC_H
 
 /**************************************************************************************************************
 
