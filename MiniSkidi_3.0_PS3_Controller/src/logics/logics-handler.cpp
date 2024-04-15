@@ -4,14 +4,14 @@
 
 ******************************************************************************************************************/
 #include "logics-handler.h"
-#include "arm-logic.h"
+#include "analog_motor-logic.h"
 #include "increment-servo-logic.h"
 #include "diff-drive-logic.h"
 #include "toggle-logic.h"
 #include "inputs-outputs\outputs-handler.h"
 #include "consts.h"
 
-ArmLogic arm_logic;
+AnalogMotorLogic arm_logic;
 DiffDriveLogic diff_drive_logic;
 IncrementServoLogic bucket_logic;
 IncrementServoLogic claw_logic;
@@ -35,10 +35,10 @@ void logics_handler_run(double lx, double ly, double ry, bool r1, bool r2, bool 
   double arm_pct = 0;
   double right_pct = 0;
   double left_pct = 0;
-  arm_logic.calc_arm_motion(ry, arm_pct);
-  diff_drive_logic.calc_diff_drive(ly, ry, right_pct, left_pct);
-  int8_t bucket_step = bucket_logic.calc_increment_servo_motion(r2, l2);
-  int8_t claw_step = claw_logic.calc_increment_servo_motion(r1, l1);
+  arm_logic.analog_motor_logic_do(ry, arm_pct);
+  diff_drive_logic.diff_drive_logic_do(ly, ry, right_pct, left_pct);
+  int8_t bucket_step = bucket_logic.increment_servo_logic_do(r2, l2);
+  int8_t claw_step = claw_logic.increment_servo_logic_do(r1, l1);
   bool aux_lights_toggle = aux_lights_logic.toggle_logic_do(r3);
   outputs_handler_run(right_pct, left_pct, arm_pct, bucket_step, claw_step, aux_lights_toggle);
 }

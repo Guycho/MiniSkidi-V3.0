@@ -1,5 +1,5 @@
-#ifndef _ARM_LOGIC_H
-#define _ARM_LOGIC_H
+#ifndef _ANALOG_MOTOR_LOGIC_H
+#define _ANALOG_MOTOR_LOGIC_H
 
 /**************************************************************************************************************
 
@@ -8,10 +8,10 @@
 ******************************************************************************************************************/
 #include <Arduino.h>
 
-class ArmLogic
+class AnalogMotorLogic
 {
 public:
-  void calc_arm_motion(double y, double &arm_motor_pct);
+  void analog_motor_logic_do(double y, double &arm_motor_pct);
 
 private:
 };

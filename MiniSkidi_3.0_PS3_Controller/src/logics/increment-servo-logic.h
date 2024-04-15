@@ -13,7 +13,7 @@ class IncrementServoLogic
 {
 public:
   void init(double degrees_per_second);
-  int8_t calc_increment_servo_motion(bool up, bool down);
+  int8_t increment_servo_logic_do(bool up, bool down);
 
 private:
   uint32_t my_step_delay;

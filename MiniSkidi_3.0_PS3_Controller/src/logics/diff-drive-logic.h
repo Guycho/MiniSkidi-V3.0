@@ -11,7 +11,7 @@
 class DiffDriveLogic
 {
 public:
-  void calc_diff_drive(double y, double x, double &right_motor_pct, double &left_motor_pct);
+  void diff_drive_logic_do(double y, double x, double &right_motor_pct, double &left_motor_pct);
 
 private:
 };
