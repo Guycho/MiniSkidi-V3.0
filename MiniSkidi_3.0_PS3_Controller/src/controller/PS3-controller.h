@@ -52,10 +52,10 @@ public:
   static void on_connect();
   PS3ControllerData ps_controller_data;
   uint8_t battery_state;
+  bool config_is_valid = false;
 
 private:
   PS3Controller() {}
   PS3Controller(const PS3Controller &);
-  bool config_is_valid = false;
 };
 #endif

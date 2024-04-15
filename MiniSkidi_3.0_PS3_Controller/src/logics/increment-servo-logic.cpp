@@ -4,13 +4,14 @@
 
 ******************************************************************************************************************/
 
-#include "bucket-logic.h"
+#include "increment-servo-logic.h"
 #include "consts.h"
 #include "utils.h"
 
 static const uint16_t MS_IN_SECOND = 1000;
 
-void BucketLogic::init(double degrees_per_second = Consts::FALLBACK_DEGREES_PER_SECOND_LOGIC)
+
+void IncrementServoLogic::init(double degrees_per_second = Consts::FALLBACK_DEGREES_PER_SECOND_LOGIC)
 {
   if (0 == degrees_per_second)
   {
@@ -20,7 +21,7 @@ void BucketLogic::init(double degrees_per_second = Consts::FALLBACK_DEGREES_PER_
   my_step_timer.start();
 }
 
-int8_t BucketLogic::calc_bucket_motion(bool up, bool down)
+int8_t IncrementServoLogic::calc_increment_servo_motion(bool up, bool down)
 {
   int8_t step = Utils::STATIC;
   if (my_step_timer.hasPassed(my_step_delay, false) && (up != down))

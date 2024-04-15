@@ -26,11 +26,12 @@ void PS3Controller::init(const IControllerConfig *controller_config)
   Ps3.attach(PS3Controller::run);
   Ps3.attachOnConnect(on_connect);
 }
-IControllerData *PS3Controller::get_controller_data() {
+IControllerData *PS3Controller::get_controller_data()
+{
   return &ps_controller_data;
 }
-void PS3Controller::set_controller_state(IControllerState state) {
-  
+void PS3Controller::set_controller_state(IControllerState state)
+{
 }
 
 void PS3Controller::run()
@@ -40,12 +41,18 @@ void PS3Controller::run()
   my_controller.ps_controller_data.stick_ly = Utils::map_double(Ps3.data.analog.stick.ly, INT8_MIN, INT8_MAX, -MAX_ANALOG_VALUE, MAX_ANALOG_VALUE);
   my_controller.ps_controller_data.stick_rx = Utils::map_double(Ps3.data.analog.stick.rx, INT8_MIN, INT8_MAX, -MAX_ANALOG_VALUE, MAX_ANALOG_VALUE);
   my_controller.ps_controller_data.stick_ry = Utils::map_double(Ps3.data.analog.stick.ry, INT8_MIN, INT8_MAX, -MAX_ANALOG_VALUE, MAX_ANALOG_VALUE);
-  my_controller.ps_controller_data.r1 = Ps3.event.button_down.r1;
-  my_controller.ps_controller_data.r2 = Ps3.event.button_down.r2;
-  my_controller.ps_controller_data.r3 = Ps3.event.button_down.r3;
-  my_controller.ps_controller_data.l1 = Ps3.event.button_down.l1;
-  my_controller.ps_controller_data.l2 = Ps3.event.button_down.l2;
-  my_controller.ps_controller_data.l3 = Ps3.event.button_down.l3;
+  my_controller.ps_controller_data.r1 = 0 != Ps3.event.button_down.r1 ? true : 0 != Ps3.event.button_up.r1 ? false
+                                                                                                           : my_controller.ps_controller_data.r1;
+  my_controller.ps_controller_data.r2 = 0 != Ps3.event.button_down.r2 ? true : 0 != Ps3.event.button_up.r2 ? false
+                                                                                                           : my_controller.ps_controller_data.r2;
+  my_controller.ps_controller_data.r3 = 0 != Ps3.event.button_down.r2 ? true : 0 != Ps3.event.button_up.r3 ? false
+                                                                                                           : my_controller.ps_controller_data.r3;
+  my_controller.ps_controller_data.l1 = 0 != Ps3.event.button_down.l1 ? true : 0 != Ps3.event.button_up.l1 ? false
+                                                                                                           : my_controller.ps_controller_data.l1;
+  my_controller.ps_controller_data.l2 = 0 != Ps3.event.button_down.l2 ? true : 0 != Ps3.event.button_up.l2 ? false
+                                                                                                           : my_controller.ps_controller_data.l2;
+  my_controller.ps_controller_data.l3 = 0 != Ps3.event.button_down.l3 ? true : 0 != Ps3.event.button_up.l3 ? false
+                                                                                                           : my_controller.ps_controller_data.l3;
 }
 
 void PS3Controller::on_connect()

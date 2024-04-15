@@ -1,5 +1,5 @@
-#ifndef _BUCKET_LOGIC_H
-#define _BUCKET_LOGIC_H
+#ifndef _INCREMENT_SERVO_LOGIC_H
+#define _INCREMENT_SERVO_LOGIC_H
 
 /**************************************************************************************************************
 
@@ -9,11 +9,11 @@
 #include <Arduino.h>
 #include <Chrono.h>
 
-class BucketLogic
+class IncrementServoLogic
 {
 public:
   void init(double degrees_per_second);
-  int8_t calc_bucket_motion(bool up, bool down);
+  int8_t calc_increment_servo_motion(bool up, bool down);
 
 private:
   uint32_t my_step_delay;

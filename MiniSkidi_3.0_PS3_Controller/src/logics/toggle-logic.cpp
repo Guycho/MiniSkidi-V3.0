@@ -1,18 +1,13 @@
-#ifndef _AUX_LIGHTS_LOGIC_H
-#define _AUX_LIGHTS_LOGIC_H
-
 /**************************************************************************************************************
 
   Created : Guy Raiz
 
 ******************************************************************************************************************/
-#include <Arduino.h>
 
-class AuxLightsLogic
+#include "toggle-logic.h"
+
+bool ToggleLogic::toggle_logic_do(bool light_switch)
 {
-public:
-  bool aux_lights_logic_run(bool light_switch);
-
-private:
-};
-#endif
+  bool toggle_lights = light_switch;
+  return toggle_lights;
+}
